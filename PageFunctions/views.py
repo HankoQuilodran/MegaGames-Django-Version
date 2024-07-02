@@ -87,3 +87,11 @@ def register(request):
 def cerrar_sesion(request):
     logout(request)
     return redirect('home')
+
+
+def carrito(request):
+    videojuegos = Videojuego.objects.all()
+    context = {
+        "title": "Pagina principal",
+        "videojuegos": videojuegos}
+    return render(request, "carrito.html", context)
