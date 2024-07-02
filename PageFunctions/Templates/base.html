@@ -19,7 +19,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6 text-center mb-5">
-                <a href="/index.html" ><img src="{% static 'img/MGLOGO.png' %}" class="logoCentral" alt="Logo de MG"></a>
+                <a href="{% url 'dash' %}" ><img src="{% static 'img/MGLOGO.png' %}" class="logoCentral" alt="Logo de MG"></a>
             </div>
         </div>
     </div>
@@ -49,14 +49,17 @@
         <ul class="navbar-nav mr-auto">
             <li class="nav-item "><a href="{% url 'dash' %}" class="nav-link active" aria-current="page">Dashboard</a></li>
             <li class="nav-item "><a href="{% url 'videojuegos' %}" class="nav-link active"  aria-current="page">Videojuegos</a></li>
-            <li class="nav-item "><a href="{% url 'user' %}" class="nav-link active" aria-current="page">Usuarios</a></li>
+            <li class="nav-item "><a href="{% url 'users' %}" class="nav-link active" aria-current="page">Usuarios</a></li>
         </ul>
         <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'register' %}">Register</a>
+          </li>
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="{% url 'user' %}">Perfil</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="{% url 'logout' %}">Cerrar Session</a>
+            <a class="nav-link active" href="{% url 'logout' %}">Cerrar Sesion</a>
           </li>
         </ul>
     </div>
@@ -72,9 +75,6 @@
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="{% url 'videojuegos' %}">Videojuegos</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{% url 'orders' %}">Orders</a>
           </li>
         </ul>
         <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
@@ -191,7 +191,7 @@
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 border-top">
             
           <div class="col-xl-6 sm-12 md-12 lg-12 xs-12 mb-3">
-              <a href="/index.html"><img class="logoFooter" src="{% static 'img/MGLOGO.png' %}" alt=""></a>
+              <a href="{% url 'dash' %}"><img class="logoFooter" src="{% static 'img/MGLOGO.png' %}" alt=""></a>
             </div>
         
             <div class="col-xl-3 sm-12 md-12 lg-12 xs-12 mb-3">

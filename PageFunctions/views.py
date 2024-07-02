@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from .forms import UserRegistry, VideojuegoForm, ConsolaForm
 from .models import Videojuego, Consola
@@ -64,19 +65,25 @@ def consolas(request):
 def users(request):
     users = User.objects.all()
     context = {"title": "Usuarios", "usuarios": users}
-    return render(request, "usuarios.html", context)
+    return render(request, "users.html", context)
 
 def user(request):
     context = {"profile": "User Profile"}
-    return render(request, "usuario.html", context)
+    return render(request, "user.html", context)
 
 def register(request):
     if request.method == "POST":
         form = UserRegistry(request.POST)
-        if form.id_valid():
+        if form.is_valid():
             form.save()
             return redirect("login")
     else:
         form = UserRegistry()
     context = {"register": "Register", "form": form}
     return render(request, "register.html", context)
+
+
+@login_required(login_url='acceso_usuario')
+def cerrar_sesion(request):
+    logout(request)
+    return redirect('home')
