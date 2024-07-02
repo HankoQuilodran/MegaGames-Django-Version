@@ -11,17 +11,17 @@
                     <tr>
                         <th scope="col">Product Name</th>
                         <th scope="col">Quantity</th>
-                        <th scope="col">Category</th>
+                        <th scope="col">price</th>
                         <th scope="col">Description</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {% for videojuego in videojuegoss %}
+                    {% for videojuego in videojuegos %}
                     <tr>
-                        <td>{{ product.name }}</td>
-                        <td>{{ product.quantity }}</td>
-                        <td>{{ product.category }}</td>
-                        <td>{{ product.description }}</td>
+                        <td>{{ videojuego.juego_nombre }}</td>
+                        <td>{{ videojuego.juego_cantidad }}</td>
+                        <td>{{ videojuego.juego_precio }}</td>
+                        <td>{{ videojuego.juego_descripcion }}</td>
                     </tr>
                     {% endfor %}
                 </tbody>

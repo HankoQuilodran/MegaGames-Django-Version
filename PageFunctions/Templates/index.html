@@ -12,20 +12,14 @@
                 </div>
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <div class="card text-center p-3">
                                 <h4>Registered Users</h4>
 
-                                <h3><span class="badge bg-primary rounded-pill">{{ count_users }}</span></h3>
+                                <h3><span class="badge bg-primary rounded-pill">{{ usuarios_cantidad }}</span></h3>
                             </div>
                         </div>
-                        <div class="col-md-4">
-                            <div class="card text-center p-3">
-                                <h4>Total Orders</h4>
-                                <h3><span class="badge bg-primary rounded-pill">{{ count_orders }}</span></h3>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <div class="card text-center p-3">
                                 <h4>All videojuegos <i class="fa-thin fa-users"></i></h4>
                                 <h3><span class="badge bg-primary rounded-pill">{{ videojuegos_cantidad }}</span></h3>
@@ -39,7 +33,7 @@
 </div>
 <div class="container my-4">
     <div class="row align-items-start">
-        <div class="col-md-4">
+        <div class="col-md-6">
             <div class="card">
                 <div class="card-header">
                     <h1 class="text-center">Users</h1>
@@ -54,11 +48,11 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {% for user in users %}
+                            {% for usuario in usuarios %}
                             <tr>
-                                <td>{{ user.username }}</td>
-                                <td>{{ user.first_name }}</td>
-                                <td>{{ user.last_name }}</td>
+                                <td>{{ usuario.username }}</td>
+                                <td>{{ usuario.first_name }}</td>
+                                <td>{{ usuario.last_name }}</td>
                             </tr>
                             {% endfor %}
                         </tbody>
@@ -68,37 +62,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="card">
-                <div class="card-header">
-                    <h1 class="text-center">Orders</h1>
-                </div>
-                <div class="card-body">
-                    <table class="table">
-                        <thead class="table-light">
-                            <tr>
-                                <th scope="col">Product</th>
-                                <th scope="col">Quantity</th>
-                                <th scope="col">Date</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for order in orders_adm %}
-                            <tr>
-
-                                <td>{{ order.product }}</td>
-                                <td>{{ order.order_quantity }}</td>
-                                <td>{{ order.date.date }}</td>
-                            </tr>
-                            {% endfor %}
-
-
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
+        <div class="col-md-6">
             <div class="card">
                 <div class="card-header">
                     <h1 class="text-center">Videojuegos</h1>
@@ -114,8 +78,8 @@
                         <tbody>
                             {% for videojuego in videojuegos %}
                             <tr>
-                                <td>{{ videojuego.videojuego_nombre }}</td>
-                                <td>{{ videojuego.videojuego_cantidad }}</td>
+                                <td>{{ videojuego.juego_nombre }}</td>
+                                <td>{{ videojuego.juego_cantidad }}</td>
                             </tr>
                             {% endfor %}
                         </tbody>
@@ -134,10 +98,10 @@
         <div class="col-md-4">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="text-center">Make an Order</h4>
+                    <h4 class="text-center">COMPRA UN JOGO</h4>
                 </div>
                 <div class="card-body">
-                    <a class="btn btn-info" href="{% url 'orders' %}">Create Order</a>
+                    <a class="btn btn-info" href="{% url 'login' %}">Create Order</a>
                 </div>
             </div>
         </div>
