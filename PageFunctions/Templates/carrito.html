@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block title %}{{ register }} {% endblock %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container card-container">
+    <div class="row">
+        <div class="col-md-3 mt-5 offset-md-3">
+            <h1>Carrito</h1>
+            <table class="table">
+                
+                <thead>
+                    <tr>
+                        <th scope="col">Juego</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for videojuego in videojuegos %}
+                    {%if videojuego.juego_estado %}
+                    <tr>
+                        <td>{{ videojuego.juego_nombre }}</td>
+                        <td>{{ videojuego.juego_precio }}</td>
+                    </tr>
+                    {%endif%}
+                    {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+</div>
+{% endblock %}
