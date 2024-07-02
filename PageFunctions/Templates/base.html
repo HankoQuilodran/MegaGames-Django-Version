@@ -53,9 +53,6 @@
         </ul>
         <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{% url 'register' %}">Register</a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="{% url 'user' %}">Perfil</a>
           </li>
           <li class="nav-item">
@@ -68,31 +65,11 @@
   <button onclick="topFunction()" id="myBtn" title="Go to top"> -^- </button>
 </section>
   {% elif user.is_authenticated %}
-  <nav class="navbar navbar-expand-lg bg-light">
-    <div class="container">
-      <a class="navbar-brand" href="{% url 'dash' %}">Dashboard</a>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{% url 'videojuegos' %}">Videojuegos</a>
-          </li>
-        </ul>
-        <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{% url 'user' %}">Profile</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" href="{% url 'logout' %}">Logout</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
   <section class="upper-section">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6 text-center mb-5">
-                <a href="/index.html" ><img src="assets/img/MGLOGO.png" class="logoCentral" alt="Logo de MG"></a>
+                <a href="{% url 'dash' %}" ><img src="{% static 'img/MGLOGO.png' %}" class="logoCentral" alt="Logo de MG"></a>
             </div>
         </div>
     </div>
@@ -119,16 +96,17 @@
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="fa fa-bars"></span> Menu
       </button>
-    <form action="#" class="searchform order-lg-last">
-      <div class="form-group d-flex">
-        <input type="text" class="form-control pl-3" placeholder="Search">
-        <button type="submit" placeholder="" class="form-control search"><span class="fa fa-search"></span></button>
-      </div>
-    </form>
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item active"><a href="/index.html" class="nav-link">Home</a></li>
-            <li class="nav-item"><a href="/Login.html" class="nav-link">Login</a></li>
-          <li class="nav-item"><a href="/ShopCart.html" class="nav-link">Carrito</a></li>
+            <li class="nav-item"><a href="{% url 'dash' %}" class="nav-link active" aria-current="page">Dash</a></li>
+          <li class="nav-item"><a href="{% url 'carrito' %}" class="nav-link active" aria-current="page">Carrito</a></li>
+        </ul>
+        <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'user' %}">Perfil</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="{% url 'logout' %}">Cerrar Sesion</a>
+          </li>
         </ul>
     </div>
   </nav>
@@ -140,7 +118,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6 text-center mb-5">
-                <a href="/index.html" ><img src="{% static 'img/MGLOGO.png' %}" class="logoCentral" alt="Logo de MG"></a>
+                <a href="{% url 'dash' %}" ><img src="{% static 'img/MGLOGO.png' %}" class="logoCentral" alt="Logo de MG"></a>
             </div>
         </div>
     </div>
@@ -167,20 +145,15 @@
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="fa fa-bars"></span> Menu
       </button>
-    <form action="#" class="searchform order-lg-last">
-      <div class="form-group d-flex">
-        <input type="text" class="form-control pl-3" placeholder="Search">
-        <button type="submit" placeholder="" class="form-control search"><span class="fa fa-search"></span></button>
-      </div>
-    </form>
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item"><a href="{% url 'login' %}" class="nav-link">Login</a></li>
-          <li class="nav-item"><a href="{% url 'register' %}" class="nav-link">Registrar</a></li>
+            <li class="nav-item"><a href="{% url 'login' %}" class="nav-link active" aria-current="page">Login</a></li>
+          <li class="nav-item"><a href="{% url 'register' %}" class="nav-link active" aria-current="page">Registrar</a></li>
         </ul>
     </div>
   </nav>
 
   <button onclick="topFunction()" id="myBtn" title="Go to top"> -^- </button>
+
 </section>
   {% endif %}
   {% block content %}
@@ -195,18 +168,20 @@
             </div>
         
             <div class="col-xl-3 sm-12 md-12 lg-12 xs-12 mb-3">
-              <h5 class="centrarTexto">Enlaces</h5>
+              <h5 class="centrarTexto">Usuario</h5>
               <ul class="nav flex-column ulFooter">
-                <li class="nav-item mb-2"><a href="/Login.html" class="nav-link p-0 linkFooter">Mi Cuenta</a></li>
-                <li class="nav-item mb-2"><a href="/ShopCart.html" class="nav-link p-0 linkFooter">Mi Carrito</a></li>
+                <li class="nav-item mb-2"><a href="{% url 'user' %}" class="nav-link p-0 linkFooter">Mi Perfil</a></li>
+                <li class="nav-item mb-2"><a href="{% url 'login' %}" class="nav-link p-0 linkFooter">Inicio de Sesión</a></li>
+                <li class="nav-item mb-2"><a href="{% url 'logout' %}" class="nav-link inactive p-0 linkFooter">Cierre de Sesión</a></li>
               </ul>
             </div>
         
             <div class="col-xl-3 sm-12 md-12 lg-12 xs-12 mb-3">
-              <h5 class="centrarTexto">Section</h5>
+              <h5 class="centrarTexto">Compras</h5>
               <ul class="nav flex-column ulFooter">
-                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 linkFooter">Home</a></li>
-                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 linkFooter">Features</a></li>  
+                <li class="nav-item mb-2"><a href="{% url 'dash' %}" class="nav-link p-0 linkFooter">Mi Dashboard</a></li>
+                <li class="nav-item mb-2"><a href="{% url 'carrito' %}" class="nav-link p-0 linkFooter">Mi Carrito</a></li>  
+                <li class="nav-item mb-2"><a href="{% url 'dash' %}" class="nav-link p-0 linkFooter">Mi Pedidos</a></li>  
               </ul>
             </div>
           </div>

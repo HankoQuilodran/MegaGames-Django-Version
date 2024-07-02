@@ -86,7 +86,7 @@ def register(request):
 @login_required(login_url='acceso_usuario')
 def cerrar_sesion(request):
     logout(request)
-    return redirect('home')
+    return redirect('login')
 
 
 def carrito(request):

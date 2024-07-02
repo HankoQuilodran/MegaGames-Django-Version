@@ -26,6 +26,7 @@ header {
     justify-content: space-around;
     min-height: 960px;
     min-width: 80%;
+    max-width: 90%;
   }
 .centrarTexto{
   text-align: center;
