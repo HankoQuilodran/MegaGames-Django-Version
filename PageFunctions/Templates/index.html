@@ -2,27 +2,28 @@
 {% block title %}{{ home }} {% endblock %}
 
 {% block content %}
-{% if user.is_authenticated and user.is_staff and user.is_superuser %}
-<div class="container my-4">
-    <div class="row align-items-start">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-header">
-                    <h1 class="text-center">Statistics</h1>
-                </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="card text-center p-3">
-                                <h4>Registered Users</h4>
+{% if user.is_authenticated and user.is_staff and user.is_superuser %} 
+    <div class="container  ">
+        <div class="row align-items-start">
+            <div class="col-md-12">
+                <div class="card my-3">
+                    <div class="card-header">
+                        <h1 class="text-center">Statistics</h1>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="card text-center p-3">
+                                    <h4>Registered Users</h4>
 
-                                <h3><span class="badge bg-primary rounded-pill">{{ usuarios_cantidad }}</span></h3>
+                                    <h3><span class="badge bg-primary rounded-pill">{{ usuarios_cantidad }}</span></h3>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="card text-center p-3">
-                                <h4>All videojuegos <i class="fa-thin fa-users"></i></h4>
-                                <h3><span class="badge bg-primary rounded-pill">{{ videojuegos_cantidad }}</span></h3>
+                            <div class="col-md-6">
+                                <div class="card text-center p-3">
+                                    <h4>All videojuegos <i class="fa-thin fa-users"></i></h4>
+                                    <h3><span class="badge bg-primary rounded-pill">{{ videojuegos_cantidad }}</span></h3>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -30,69 +31,69 @@
             </div>
         </div>
     </div>
-</div>
-<div class="container my-4">
-    <div class="row align-items-start">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-header">
-                    <h1 class="text-center">Users</h1>
-                </div>
-                <div class="card-body">
-                    <table class="table">
-                        <thead class="table-light">
-                            <tr>
-                                <th scope="col">User Name</th>
-                                <th scope="col">First Name</th>
-                                <th scope="col">Last Name</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for usuario in usuarios %}
-                            <tr>
-                                <td>{{ usuario.username }}</td>
-                                <td>{{ usuario.first_name }}</td>
-                                <td>{{ usuario.last_name }}</td>
-                            </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                    <a class="nav-link text-primary active" aria-current="page" href="{% url 'users' %}">View All
-                        Staff</a>
+    <div class="container ">
+        <div class="row align-items-start">
+            <div class="col-md-6">
+                <div class="card my-3">
+                    <div class="card-header">
+                        <h1 class="text-center">Users</h1>
+                    </div>
+                    <div class="card-body">
+                        <table class="table">
+                            <thead class="table-light">
+                                <tr>
+                                    <th scope="col">User Name</th>
+                                    <th scope="col">First Name</th>
+                                    <th scope="col">Last Name</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for usuario in usuarios %}
+                                <tr>
+                                    <td>{{ usuario.username }}</td>
+                                    <td>{{ usuario.first_name }}</td>
+                                    <td>{{ usuario.last_name }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                        <a class="nav-link text-primary active" aria-current="page" href="{% url 'users' %}">View All
+                            Staff</a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-header">
-                    <h1 class="text-center">Videojuegos</h1>
-                </div>
-                <div class="card-body">
-                    <table class="table">
-                        <thead class="table-light">
-                            <tr>
-                                <th scope="col">Name</th>
-                                <th scope="col">Quantity</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for videojuego in videojuegos %}
-                            <tr>
-                                <td>{{ videojuego.juego_nombre }}</td>
-                                <td>{{ videojuego.juego_cantidad }}</td>
-                            </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                    <a class="nav-link text-primary active" aria-current="page" href="{% url 'videojuegos' %}">Go to
-                        Videojuegos </a>
+            <div class="col-md-6">
+                <div class="card my-3">
+                    <div class="card-header">
+                        <h1 class="text-center">Videojuegos</h1>
+                    </div>
+                    <div class="card-body">
+                        <table class="table">
+                            <thead class="table-light">
+                                <tr>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Quantity</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for videojuego in videojuegos %}
+                                <tr>
+                                    <td>{{ videojuego.juego_nombre }}</td>
+                                    <td>{{ videojuego.juego_cantidad }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                        <a class="nav-link text-primary active" aria-current="page" href="{% url 'videojuegos' %}">Go to
+                            Videojuegos </a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-</div>
+    </div>
 {% else %}
+<div></div>
 <div class="container my-4">
     <div class="row">
         <div class="col-md-4">
