@@ -2,7 +2,7 @@
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   }
 body {
-    background-image: url(/PageFunctions/assets/img/image-28.png);
+    background-image: url(/static/img/image-25.png);
     margin: 0;
     padding: 0;
   }
@@ -27,6 +27,14 @@ header {
     min-height: 960px;
     min-width: 80%;
   }
+.centrarTexto{
+  text-align: center;
+  margin-top: 40px;
+  padding-bottom: 10px;
+}
+.containerpagina{
+  min-height: 1000px;
+}
 /*ESTRUCTURA FOOTER*/
 .logoFooter{
     width: 50%;
