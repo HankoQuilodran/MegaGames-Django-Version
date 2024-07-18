@@ -39,7 +39,8 @@ class Videojuego(models.Model):
     juego_descripcion=models.CharField( max_length=250)
     juego_cantidad= models.IntegerField()
     juego_estado = models.BooleanField(default=True)
-    juego_image = models.ImageField(default="assets\\img\\GAME_DEFAULT.png", upload_to="assets\\img")
+    slug = models.SlugField(default="", null=False)
+    juego_image = models.ImageField(upload_to="assets\\img")
     
     def __str__(self):
         return self.juego_nombre
@@ -52,7 +53,7 @@ class Consola(models.Model):
     consola_descripcion=models.CharField( max_length=250)
     consola_cantidad= models.IntegerField()
     consola_estado = models.BooleanField(default=True)
-    consola_image = models.ImageField(default="assets\\img\\CONSOLA_DEFAULT.webp", upload_to="assets\\img")
+    consola_image = models.ImageField(upload_to="assets\\img")
     
     def __str__(self):
         return self.consola_nombre

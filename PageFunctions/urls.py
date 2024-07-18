@@ -4,6 +4,7 @@ from . import views
 urlpatterns = [
     path("dash/", views.index, name="dash"),
     path("videojuegos/", views.videojuegos, name="videojuegos"),
+    path('<slug:slug>', views.juego_pagina, name="juego_pagina"),
     path("carrito/", views.carrito, name="carrito"),
     path("consolas/", views.consolas, name="consolas"),
     path("users/", views.users, name="users"),

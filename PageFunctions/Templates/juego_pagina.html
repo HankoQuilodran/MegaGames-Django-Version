@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}
+{{ header }} 
+{% endblock %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="container card-container">
+    
+    <div>
+        <img src="{{ juego.juego_image.url }}" class="pageImage">
+    </div>
+    <div class="centrar-texto">
+        <br> <br> <br> <br> <br> <br>
+        <h1> <b> {{ juego.juego_nombre }}  </b> </h1>
+        
+        <h4> {{ juego.juego_descripcion }} </h4>
+
+        <br>
+
+        <p> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Soluta minus, repudiandae non reiciendis vero ad quos consequatur sed itaque sint ratione eum veritatis hic, quod eligendi eos qui nobis quo? Lorem ipsum dolor sit amet consectetur adipisicing elit. At impedit a quas omnis nisi, numquam dicta laborum explicabo unde placeat sint quaerat odit in ut sit quam consequatur consequuntur nesciunt!</p>
+
+        <h4>precio: {{juego.juego_precio}} $</h4>
+        <br>
+        <a href="#" class="btnComprar">Añadir al carrito</a>
+    </div>
+</div>
+{% endblock %}
