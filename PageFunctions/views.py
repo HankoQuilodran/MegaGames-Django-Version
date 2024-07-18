@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
+from django.http import HttpResponse
 from .forms import UserRegistry, VideojuegoForm, ConsolaForm
 from .models import Videojuego, Consola
 
@@ -26,6 +27,25 @@ def index(request):
     }
     return render(request, "index.html", context)
 
+def catalogoV(request):
+    videojuegos = Videojuego.objects.all()
+    users = User.objects.all()
+    consolas = Consola.objects.all()
+    videojuegos_cantidad = len(Videojuego.objects.all())
+    users_cantidad = len(User.objects.all())
+    consolas_cantidad = len(Consola.objects.all())
+
+    context = {
+        "title": "Pagina principal",
+        "videojuegos": videojuegos,
+        "usuarios": users,
+        "consolas": consolas,
+        "videojuegos_cantidad": videojuegos_cantidad,
+        "usuarios_cantidad": users_cantidad,
+        "consolas_cantidad": consolas_cantidad
+    }
+    return render(request, "videojuegos.html", context)
+
 def videojuegos(request):
     videojuegos = Videojuego.objects.all()
     print([i for i in request])
@@ -42,6 +62,13 @@ def videojuegos(request):
                "videojuegos": videojuegos,
                "form": form}
     return render(request, "videojuegos.html", context)
+
+
+
+def juego_pagina(request, slug):
+    juego = Videojuego.objects.get(slug=slug)
+    return render(request, 'juego_pagina.html', {'juego': juego})
+
 
 def consolas(request):
     consolas = Consola.objects.all()

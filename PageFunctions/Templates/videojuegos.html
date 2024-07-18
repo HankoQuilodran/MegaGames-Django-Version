@@ -2,9 +2,53 @@
 {% block title %}{{ header }} {% endblock %}
 {% load crispy_forms_tags %}
 {% block content %}
-<div class="container card-container">
+<div class="container card-containerP">
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-12">
+            <div class="card-containerP">
+                {% for x in videojuegos%}
+                <div class="cardP">
+                    <img src="{{x.juego_image.url}}" alt="{{x.juego_nombre}}"> 
+                    
+                    <div>
+                        <h3>{{x.juego_nombre}}</h3>
+                        <p>{{x.juego_descripcion}}</p>
+                        <h4>Precio: {{x.juego_precio}}</h4>
+                        <a href="{% url 'juego_pagina' slug=x.slug %}" class="btn">Revisar</a>
+                    </div>
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+
+
+
+        </div>
+        {% if user.is_staff and user.is_superuser %}
+        <div class="col-md-4">
+            <form method="POST">
+                <h4>Add a New Product</h4>
+                <hr>
+                {% csrf_token %}
+                {{ form|crispy}}
+                <br>
+                <button type="submit" class="btn btn-primary">Add</button>
+            </form>
+        </div>
+        {% else %}
+        <div class="col-md-4">
+
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+
+
+
+<!--  
             <table class="table">
 
                 <thead>
@@ -26,23 +70,4 @@
                     {% endfor %}
                 </tbody>
             </table>
-        </div>
-        {% if user.is_staff and user.is_superuser %}
-        <div class="col-md-4">
-            <form method="POST">
-                <h4>Add a New Product</h4>
-                <hr>
-                {% csrf_token %}
-                {{ form|crispy}}
-                <br>
-                <button type="submit" class="btn btn-primary">Add</button>
-            </form>
-        </div>
-        {% else %}
-        <div class="col-md-4">
-
-        </div>
-        {% endif %}
-    </div>
-</div>
-{% endblock %}
+-->
